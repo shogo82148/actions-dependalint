@@ -1,0 +1,8 @@
+# Test configuration for dependalint
+
+version: 2
+updates:
+  - package-ecosystem: "unknown"
+    directory: "/not-found"
+    schedule:
+      interval: "invalid"

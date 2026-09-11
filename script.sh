@@ -13,15 +13,16 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo '::group::🐶 Installing misspell ... https://github.com/client9/misspell'
+echo '::group::🐶 Installing dependalint ... https://github.com/shogo82148/dependalint'
 TEMP_PATH="$(mktemp -d)"
 PATH="${TEMP_PATH}:$PATH"
-wget -O - -q https://git.io/misspell | sh -s -- -b "${TEMP_PATH}"
+wget -O - -q https://raw.githubusercontent.com/shogo82148/dependalint/cf6fc978e1d0ef66d4389c4fd9623c13cc9ee619/install.sh | sh -s -- -b "${TEMP_PATH}"
+dependalint -version
 echo '::endgroup::'
 
-echo '::group:: Running misspell with reviewdog 🐶 ...'
+echo '::group:: Running dependalint with reviewdog 🐶 ...'
 # shellcheck disable=SC2086
-misspell -locale="${INPUT_LOCALE}" . |
+dependalint ${INPUT_DEPENDALINT_FLAGS} |
   reviewdog -efm="%f:%l:%c: %m" \
     -name="${INPUT_TOOL_NAME}" \
     -reporter="${INPUT_REPORTER}" \
