@@ -57,6 +57,10 @@ on:
       - .github/dependabot.yml
       - .github/workflows/dependalint.yml
 
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   dependalint:
     name: runner / dependalint
