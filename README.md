@@ -1,4 +1,4 @@
-# action-composite-template
+# actions-dependalint
 
 ## Input
 
