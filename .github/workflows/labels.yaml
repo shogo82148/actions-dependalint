@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - .github/labels.json
-      - .github/workflows/labels.yml
+      - .github/workflows/labels.yaml
     branches:
       - main
   workflow_dispatch:
