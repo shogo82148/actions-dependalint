@@ -46,5 +46,23 @@ inputs:
 ## Usage
 
 ```yaml
+name: reviewdog
+on:
+  push:
+    paths:
+      - .github/dependabot.yml
+      - .github/workflows/dependalint.yml
+  pull_request:
+    paths:
+      - .github/dependabot.yml
+      - .github/workflows/dependalint.yml
 
+  dependalint:
+    name: runner / dependalint
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: shogo82148/actions-dependalint@v0
+        with:
+          reporter: github-check
 ```
