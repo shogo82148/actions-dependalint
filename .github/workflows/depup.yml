@@ -1,0 +1,27 @@
+name: depup
+on:
+  schedule:
+    - cron: "14 14 * * *" # Runs at 14:14 UTC every day
+  repository_dispatch:
+    types: [depup]
+  workflow_dispatch:
+
+jobs:
+  reviewdog:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Enable OIDC
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Configure signed commits
+      # https://www.chainguard.dev/unchained/keyless-git-commit-signing-with-gitsign-and-github-actions
+      # https://github.com/chainguard-dev/actions/commits/main/setup-gitsign
+      - uses: chainguard-dev/actions/setup-gitsign@141bf225e9c19c34304ee9d06e9be9c44a6d8765 # main branch as of 2024-12-27
+      - uses: reviewdog/action-depup/with-pr@99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a # v1.6.5
+        with:
+          file: action.yml
+          version_name: reviewdog_version
+          repo: reviewdog/reviewdog
+          labels: "bump:minor"
