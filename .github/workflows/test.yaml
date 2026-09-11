@@ -8,7 +8,7 @@ on:
 jobs:
   test-check:
     name: runner / dependalint (github-check)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./
@@ -21,7 +21,7 @@ jobs:
   test-pr-check:
     if: github.event_name == 'pull_request'
     name: runner / dependalint (github-pr-check)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./
@@ -34,7 +34,7 @@ jobs:
   test-pr-review:
     if: github.event_name == 'pull_request'
     name: runner / dependalint (github-pr-review)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./
@@ -52,7 +52,7 @@ jobs:
 
   test-sarif:
     name: runner / dependalint (sarif)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./
