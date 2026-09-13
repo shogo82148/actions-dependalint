@@ -21,7 +21,7 @@ jobs:
       - uses: chainguard-dev/actions/setup-gitsign@142d22e4cec7c824db396585b9bc86f76f7c1732 # v1.6.35
       - uses: reviewdog/action-depup/with-pr@99f7aecf3e4d06d5a3faf190dae5dc79ac530b5a # v1.6.5
         with:
-          file: action.yml
+          file: action.yaml
           version_name: reviewdog_version
           repo: reviewdog/reviewdog
           labels: "bump:minor"
